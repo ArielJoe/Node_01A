@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIAKAD - Tentang</title>
+    <link href="/css/style.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="siakad-header text-white shadow-md">
+      <div class="container mx-auto p-4">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center">
+            <h1 class="text-2xl font-bold">SIAKAD</h1>
+            <span class="ml-2 text-sm">Sistem Informasi Akademik</span>
+          </div>
+
+          <!-- Navigasi -->
+          <nav class="hidden md:block">
+            <ul class="flex space-x-6">
+              <li>
+                <a
+                  href="/beranda"
+                  class="font-medium hover:text-blue-200 transition-colors duration-300"
+                  >Beranda</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/mahasiswa"
+                  class="font-medium hover:text-blue-200 transition-colors duration-300"
+                  >Mahasiswa</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/dosen-wali"
+                  class="font-medium hover:text-blue-200 transition-colors duration-300"
+                  >Dosen Wali</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/tentang"
+                  class="font-medium hover:text-blue-200 transition-colors duration-300 border-b-2 border-white"
+                  >Tentang</a
+                >
+              </li>
+            </ul>
+          </nav>
+
+          <!-- Menu mobile (responsif) -->
+          <div class="md:hidden">
+            <button
+              id="mobile-menu-button"
+              class="text-white focus:outline-none"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Menu mobile dropdown -->
+        <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2">
+          <a
+            href="/beranda"
+            class="block py-2 px-4 text-white hover:bg-blue-600 rounded mt-1"
+            >Beranda</a
+          >
+          <a
+            href="/mahasiswa"
+            class="block py-2 px-4 text-white hover:bg-blue-600 rounded mt-1"
+            >Mahasiswa</a
+          >
+          <a
+            href="/dosen-wali"
+            class="block py-2 px-4 text-white hover:bg-blue-600 rounded mt-1"
+            >Dosen Wali</a
+          >
+          <a
+            href="/tentang"
+            class="block py-2 px-4 text-white bg-blue-600 rounded"
+            >Tentang</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-4 flex-grow page-transition">
+      <section class="mb-10">
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+          <h2 class="text-3xl font-bold mb-4 text-blue-700">Tentang SIAKAD</h2>
+          <p class="text-lg text-gray-700 mb-4">
+            Sistem Informasi Akademik (SIAKAD) adalah platform digital yang
+            dirancang untuk mempermudah pengelolaan data akademik di lingkungan
+            perguruan tinggi. SIAKAD menyediakan akses cepat dan aman terhadap
+            informasi mahasiswa, dosen wali, serta hubungan bimbingan akademik,
+            sehingga mendukung efisiensi administrasi akademik.
+          </p>
+          <p class="text-lg text-gray-700">
+            Dikembangkan dengan teknologi modern, SIAKAD bertujuan untuk
+            memberikan pengalaman pengguna yang intuitif dan responsif, baik
+            untuk administrator, dosen, maupun mahasiswa. Sistem ini mendukung
+            berbagai fitur seperti pengelolaan data mahasiswa, profil dosen
+            wali, dan statistik akademik.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Visi -->
+          <div
+            class="siakad-card bg-white rounded-lg shadow-md overflow-hidden"
+          >
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-3 text-blue-600">Visi</h3>
+              <p class="text-gray-600 mb-4">
+                Menjadi sistem informasi akademik terdepan yang mendukung
+                transformasi digital di dunia pendidikan tinggi, dengan fokus
+                pada efisiensi, akurasi, dan kemudahan akses.
+              </p>
+            </div>
+          </div>
+
+          <!-- Misi -->
+          <div
+            class="siakad-card bg-white rounded-lg shadow-md overflow-hidden"
+          >
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-3 text-blue-600">Misi</h3>
+              <ul class="list-disc list-inside text-gray-600">
+                <li>
+                  Menyediakan platform yang aman dan andal untuk pengelolaan
+                  data akademik.
+                </li>
+                <li>
+                  Meningkatkan transparansi dan aksesibilitas informasi
+                  akademik.
+                </li>
+                <li>
+                  Mendukung pengambilan keputusan berbasis data melalui
+                  statistik dan laporan.
+                </li>
+                <li>
+                  Memastikan pengalaman pengguna yang responsif di berbagai
+                  perangkat.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">Tim Pengembang</h2>
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <p class="text-lg text-gray-700 mb-4">
+            SIAKAD dikembangkan oleh tim profesional yang berdedikasi untuk
+            menghadirkan solusi teknologi pendidikan terbaik. Kami terdiri dari
+            pengembang perangkat lunak, desainer UI/UX, dan ahli administrasi
+            akademik yang bekerja sama untuk memenuhi kebutuhan institusi
+            pendidikan.
+          </p>
+          <p class="text-lg text-gray-700">
+            Kami berkomitmen untuk terus memperbarui dan meningkatkan fitur
+            SIAKAD agar tetap relevan dengan perkembangan teknologi dan
+            kebutuhan pengguna.
+          </p>
+        </div>
+      </section>
+
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">Kontak Kami</h2>
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <p class="text-lg text-gray-700 mb-4">
+            Jika Anda memiliki pertanyaan, saran, atau membutuhkan bantuan
+            terkait SIAKAD, silakan hubungi kami melalui:
+          </p>
+          <ul class="list-none text-gray-600">
+            <li class="mb-2">
+              <span class="font-semibold">Email:</span> support@siakad.ac.id
+            </li>
+            <li class="mb-2">
+              <span class="font-semibold">Telepon:</span> +62 21 1234 5678
+            </li>
+            <li>
+              <span class="font-semibold">Alamat:</span> Jl. Pendidikan No. 123,
+              Jakarta, Indonesia
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="siakad-footer text-white py-6">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-4 md:mb-0">
+            <h3 class="text-xl font-bold">SIAKAD</h3>
+            <p class="text-sm">Sistem Informasi Akademik © 2025</p>
+          </div>
+          <div class="flex space-x-4">
+            <a
+              href="/beranda"
+              class="hover:text-blue-300 transition-colors duration-300"
+              >Beranda</a
+            >
+            <a
+              href="/mahasiswa"
+              class="hover:text-blue-300 transition-colors duration-300"
+              >Mahasiswa</a
+            >
+            <a
+              href="/dosen-wali"
+              class="hover:text-blue-300 transition-colors duration-300"
+              >Dosen Wali</a
+            >
+            <a
+              href="/tentang"
+              class="hover:text-blue-300 transition-colors duration-300"
+              >Tentang</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Toggle mobile menu
+      document
+        .getElementById("mobile-menu-button")
+        .addEventListener("click", function () {
+          const mobileMenu = document.getElementById("mobile-menu");
+          mobileMenu.classList.toggle("hidden");
+        });
+    </script>
+  </body>
+</html>

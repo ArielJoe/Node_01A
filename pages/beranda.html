@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIAKAD - Sistem Informasi Akademik</title>
+    <link href="/css/style.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="siakad-header text-white shadow-md">
+      <div class="container mx-auto p-4">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center">
+            <h1 class="text-2xl font-bold">SIAKAD</h1>
+            <span class="ml-2 text-sm">Sistem Informasi Akademik</span>
+          </div>
+
+          <!-- Navigasi -->
+          <nav class="hidden md:block">
+            <ul class="flex space-x-6">
+              <li>
+                <a
+                  href="/beranda"
+                  class="font-medium hover:text-blue-200 transition-colors duration-300 border-b-2 border-white"
+                  >Beranda</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/mahasiswa"
+                  class="font-medium hover:text-blue-200 transition-colors duration-300"
+                  >Mahasiswa</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/dosen-wali"
+                  class="font-medium hover:text-blue-200 transition-colors duration-300"
+                  >Dosen Wali</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/tentang"
+                  class="font-medium hover:text-blue-200 transition-colors duration-300"
+                  >Tentang</a
+                >
+              </li>
+            </ul>
+          </nav>
+
+          <!-- Menu mobile (responsif) -->
+          <div class="md:hidden">
+            <button
+              id="mobile-menu-button"
+              class="text-white focus:outline-none"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Menu mobile dropdown -->
+        <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2">
+          <a
+            href="/beranda"
+            class="block py-2 px-4 text-white bg-blue-600 rounded"
+            >Beranda</a
+          >
+          <a
+            href="/mahasiswa"
+            class="block py-2 px-4 text-white hover:bg-blue-600 rounded mt-1"
+            >Mahasiswa</a
+          >
+          <a
+            href="/dosen-wali"
+            class="block py-2 px-4 text-white hover:bg-blue-600 rounded mt-1"
+            >Dosen Wali</a
+          >
+          <a
+            href="/tentang"
+            class="block py-2 px-4 text-white hover:bg-blue-600 rounded mt-1"
+            >Tentang</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-4 flex-grow page-transition">
+      <section class="mb-10">
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+          <h2 class="text-3xl font-bold mb-4 text-blue-700">
+            Selamat Datang di SIAKAD
+          </h2>
+          <p class="text-lg text-gray-700">
+            Sistem Informasi Akademik (SIAKAD) adalah platform yang memudahkan
+            pengelolaan data akademik mahasiswa dan dosen wali. Melalui sistem
+            ini, Anda dapat mengakses informasi mahasiswa, dosen wali, dan
+            hubungan bimbingan akademik.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Card Mahasiswa -->
+          <div
+            class="siakad-card bg-white rounded-lg shadow-md overflow-hidden"
+          >
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-3 text-blue-600">
+                Data Mahasiswa
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Akses dan kelola data mahasiswa. Lihat informasi lengkap tentang
+                mahasiswa dan dosen wali mereka.
+              </p>
+              <a
+                href="/mahasiswa"
+                class="siakad-button inline-block px-4 py-2 bg-blue-500 text-white rounded-md"
+              >
+                Lihat Mahasiswa
+              </a>
+            </div>
+          </div>
+
+          <!-- Card Dosen Wali -->
+          <div
+            class="siakad-card bg-white rounded-lg shadow-md overflow-hidden"
+          >
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-3 text-blue-600">
+                Data Dosen Wali
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Akses informasi dosen wali dan lihat mahasiswa yang dibimbing
+                oleh setiap dosen.
+              </p>
+              <a
+                href="/dosen-wali"
+                class="siakad-button inline-block px-4 py-2 bg-blue-500 text-white rounded-md"
+              >
+                Lihat Dosen Wali
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">
+          Statistik Akademik
+        </h2>
+        <div class="grid md:grid-cols-3 gap-4">
+          <!-- Statistik Jurusan -->
+          <div class="bg-white p-4 rounded shadow-md">
+            <h3 class="font-semibold text-gray-700 mb-2">Distribusi Jurusan</h3>
+            <div class="text-center">
+              <div class="mb-2">
+                <span class="block">Informatika</span>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div
+                    class="bg-blue-600 h-2.5 rounded-full"
+                    style="width: 40%"
+                  ></div>
+                </div>
+              </div>
+              <div class="mb-2">
+                <span class="block">Sistem Informasi</span>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div
+                    class="bg-green-500 h-2.5 rounded-full"
+                    style="width: 40%"
+                  ></div>
+                </div>
+              </div>
+              <div class="mb-2">
+                <span class="block">Teknik Komputer</span>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div
+                    class="bg-yellow-500 h-2.5 rounded-full"
+                    style="width: 20%"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Statistik Semester -->
+          <div class="bg-white p-4 rounded shadow-md">
+            <h3 class="font-semibold text-gray-700 mb-2">
+              Distribusi Semester
+            </h3>
+            <div class="flex justify-around items-end h-32">
+              <div class="flex flex-col items-center">
+                <div class="h-10 w-6 bg-blue-500 rounded-t"></div>
+                <span class="text-xs mt-1">1</span>
+              </div>
+              <div class="flex flex-col items-center">
+                <div class="h-20 w-6 bg-blue-500 rounded-t"></div>
+                <span class="text-xs mt-1">3</span>
+              </div>
+              <div class="flex flex-col items-center">
+                <div class="h-12 w-6 bg-blue-500 rounded-t"></div>
+                <span class="text-xs mt-1">5</span>
+              </div>
+              <div class="flex flex-col items-center">
+                <div class="h-6 w-6 bg-blue-500 rounded-t"></div>
+                <span class="text-xs mt-1">7</span>
+              </div>
+            </div>
+            <div class="text-center mt-2 text-sm">Semester</div>
+          </div>
+
+          <!-- Statistik Rasio -->
+          <div class="bg-white p-4 rounded shadow-md">
+            <h3 class="font-semibold text-gray-700 mb-2">
+              Rasio Dosen:Mahasiswa
+            </h3>
+            <div class="flex justify-center items-center h-32">
+              <div class="text-center">
+                <span class="text-3xl font-bold text-blue-600">1:3</span>
+                <p class="text-sm text-gray-600 mt-2">
+                  Rata-rata mahasiswa per dosen wali
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="siakad-footer text-white py-6">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-4 md:mb-0">
+            <h3 class="text-xl font-bold">SIAKAD</h3>
+            <p class="text-sm">Sistem Informasi Akademik © 2025</p>
+          </div>
+          <div class="flex space-x-4">
+            <a
+              href="/beranda"
+              class="hover:text-blue-300 transition-colors duration-300"
+              >Beranda</a
+            >
+            <a
+              href="/mahasiswa"
+              class="hover:text-blue-300 transition-colors duration-300"
+              >Mahasiswa</a
+            >
+            <a
+              href="/dosen-wali"
+              class="hover:text-blue-300 transition-colors duration-300"
+              >Dosen Wali</a
+            >
+            <a
+              href="/tentang"
+              class="hover:text-blue-300 transition-colors duration-300"
+              >Tentang</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Toggle mobile menu
+      document
+        .getElementById("mobile-menu-button")
+        .addEventListener("click", function () {
+          const mobileMenu = document.getElementById("mobile-menu");
+          mobileMenu.classList.toggle("hidden");
+        });
+    </script>
+  </body>
+</html>

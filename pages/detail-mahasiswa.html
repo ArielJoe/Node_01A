@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIAKAD - Detail Mahasiswa</title>
+    <link href="/css/style.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="siakad-header text-white shadow-md">
+      <div class="container mx-auto p-4">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center">
+            <h1 class="text-2xl font-bold">SIAKAD</h1>
+            <span class="ml-2 text-sm">Sistem Informasi Akademik</span>
+          </div>
+
+          <!-- Navigasi -->
+          <nav class="hidden md:block">
+            <ul class="flex space-x-6">
+              <li>
+                <a
+                  href="/beranda"
+                  class="font-medium hover:text-blue-200 transition-colors duration-300"
+                  >Beranda</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/mahasiswa"
+                  class="font-medium hover:text-blue-200 transition-colors duration-300 border-b-2 border-white"
+                  >Mahasiswa</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/dosen-wali"
+                  class="font-medium hover:text-blue-200 transition-colors duration-300"
+                  >Dosen Wali</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/tentang"
+                  class="font-medium hover:text-blue-200 transition-colors duration-300"
+                  >Tentang</a
+                >
+              </li>
+            </ul>
+          </nav>
+
+          <!-- Menu mobile (responsif) -->
+          <div class="md:hidden">
+            <button
+              id="mobile-menu-button"
+              class="text-white focus:outline-none"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Menu mobile dropdown -->
+        <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2">
+          <a
+            href="/beranda"
+            class="block py-2 px-4 text-white hover:bg-blue-600 rounded mt-1"
+            >Beranda</a
+          >
+          <a
+            href="/mahasiswa"
+            class="block py-2 px-4 text-white bg-blue-600 rounded"
+            >Mahasiswa</a
+          >
+          <a
+            href="/dosen-wali"
+            class="block py-2 px-4 text-white hover:bg-blue-600 rounded mt-1"
+            >Dosen Wali</a
+          >
+          <a
+            href="/tentang"
+            class="block py-2 px-4 text-white hover:bg-blue-600 rounded mt-1"
+            >Tentang</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-4 flex-grow page-transition">
+      <!-- Navigasi Kembali -->
+      <div class="mb-4">
+        <a
+          href="/mahasiswa"
+          class="text-blue-600 hover:text-blue-800 flex items-center transition-colors duration-300"
+        >
+          <svg
+            class="w-4 h-4 mr-1"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"
+            ></path>
+          </svg>
+          Kembali ke Daftar Mahasiswa
+        </a>
+      </div>
+
+      <!-- Detail Mahasiswa -->
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div id="mahasiswa-loading" class="text-center py-8 text-gray-500">
+          Memuat data mahasiswa...
+        </div>
+
+        <div id="mahasiswa-data" class="hidden">
+          <div class="border-b pb-4 mb-6">
+            <h2
+              id="mahasiswa-nama"
+              class="text-2xl font-bold text-blue-700 mb-1"
+            ></h2>
+            <p id="mahasiswa-nim" class="text-gray-600"></p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <!-- Informasi Mahasiswa -->
+            <div>
+              <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                Informasi Mahasiswa
+              </h3>
+              <table class="w-full">
+                <tr>
+                  <td class="py-2 font-medium text-gray-700">NIM</td>
+                  <td class="py-2 text-gray-800" id="detail-nim"></td>
+                </tr>
+                <tr>
+                  <td class="py-2 font-medium text-gray-700">Nama Lengkap</td>
+                  <td class="py-2 text-gray-800" id="detail-nama"></td>
+                </tr>
+                <tr>
+                  <td class="py-2 font-medium text-gray-700">Jurusan</td>
+                  <td class="py-2 text-gray-800" id="detail-jurusan"></td>
+                </tr>
+                <tr>
+                  <td class="py-2 font-medium text-gray-700">Semester</td>
+                  <td class="py-2 text-gray-800" id="detail-semester"></td>
+                </tr>
+              </table>
+            </div>
+
+            <!-- Informasi Dosen Wali -->
+            <div>
+              <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                Dosen Wali
+              </h3>
+              <div id="dosen-loading" class="text-gray-500">
+                Memuat data dosen wali...
+              </div>
+
+              <div id="dosen-data" class="hidden">
+                <table class="w-full">
+                  <tr>
+                    <td class="py-2 font-medium text-gray-700">NIP</td>
+                    <td class="py-2 text-gray-800" id="dosen-nip"></td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 font-medium text-gray-700">Nama Dosen</td>
+                    <td class="py-2 text-gray-800" id="dosen-nama"></td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 font-medium text-gray-700">Departemen</td>
+                    <td class="py-2 text-gray-800" id="dosen-departemen"></td>
+                  </tr>
+                </table>
+
+                <div class="mt-4">
+                  <a
+                    id="link-dosen"
+                    href="#"
+                    class="siakad-button inline-block px-4 py-2 bg-blue-500 text-white rounded-md"
+                  >
+                    Lihat Detail Dosen
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card Profil dan Status -->
+          <div class="mt-8 grid md:grid-cols-2 gap-6">
+            <div
+              class="siakad-card bg-white rounded-lg shadow-md border border-gray-200 p-6"
+            >
+              <h3 class="text-lg font-semibold mb-3 text-gray-800">
+                Status Akademik
+              </h3>
+              <div class="flex items-center mb-2">
+                <span class="siakad-badge badge-success mr-2">Aktif</span>
+                <span class="text-gray-600">Status Mahasiswa</span>
+              </div>
+              <div class="flex items-center">
+                <span class="siakad-badge badge-primary mr-2">Reguler</span>
+                <span class="text-gray-600">Jalur Masuk</span>
+              </div>
+            </div>
+
+            <div
+              class="siakad-card bg-white rounded-lg shadow-md border border-gray-200 p-6"
+            >
+              <h3 class="text-lg font-semibold mb-3 text-gray-800">
+                Ringkasan Akademik
+              </h3>
+              <div class="flex justify-between mb-2">
+                <span class="text-gray-600">IPK</span>
+                <span class="font-semibold text-blue-600">3.75</span>
+              </div>
+              <div class="flex justify-between mb-2">
+                <span class="text-gray-600">Total SKS</span>
+                <span class="font-semibold text-blue-600">84</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-600">Presensi</span>
+                <span class="font-semibold text-blue-600">95%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Error Message -->
+        <div id="error-message" class="hidden text-center py-8 text-red-500">
+          Gagal memuat data mahasiswa. Silakan coba lagi nanti.
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="siakad-footer text-white py-6">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-4 md:mb-0">
+            <h3 class="text-xl font-bold">SIAKAD</h3>
+            <p class="text-sm">Sistem Informasi Akademik © 2025</p>
+          </div>
+          <div class="flex space-x-4">
+            <a
+              href="/beranda"
+              class="hover:text-blue-300 transition-colors duration-300"
+              >Beranda</a
+            >
+            <a
+              href="/mahasiswa"
+              class="hover:text-blue-300 transition-colors duration-300"
+              >Mahasiswa</a
+            >
+            <a
+              href="/dosen-wali"
+              class="hover:text-blue-300 transition-colors duration-300"
+              >Dosen Wali</a
+            >
+            <a
+              href="/tentang"
+              class="hover:text-blue-300 transition-colors duration-300"
+              >Tentang</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Toggle mobile menu
+      document
+        .getElementById("mobile-menu-button")
+        .addEventListener("click", function () {
+          const mobileMenu = document.getElementById("mobile-menu");
+          mobileMenu.classList.toggle("hidden");
+        });
+
+      // Ambil ID mahasiswa dari URL
+      document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const mahasiswaId = urlParams.get("id");
+
+        if (!mahasiswaId) {
+          showError("ID mahasiswa tidak ditemukan dalam URL.");
+          return;
+        }
+
+        fetchMahasiswaDetail(mahasiswaId);
+      });
+
+      // Fungsi untuk mengambil detail mahasiswa dari API
+      async function fetchMahasiswaDetail(id) {
+        try {
+          const response = await fetch(`/api/mahasiswa/${id}`);
+
+          if (!response.ok) {
+            throw new Error("Mahasiswa tidak ditemukan");
+          }
+
+          const mahasiswa = await response.json();
+          displayMahasiswaData(mahasiswa);
+          fetchDosenDetail(mahasiswa.dosenWaliId);
+        } catch (error) {
+          console.error("Error fetching mahasiswa detail:", error);
+          showError(
+            "Mahasiswa tidak ditemukan atau terjadi kesalahan saat memuat data."
+          );
+        }
+      }
+
+      // Fungsi untuk mengambil detail dosen wali
+      async function fetchDosenDetail(dosenId) {
+        try {
+          const response = await fetch(`/api/dosen-wali/${dosenId}`);
+
+          if (!response.ok) {
+            throw new Error("Dosen wali tidak ditemukan");
+          }
+
+          const dosen = await response.json();
+          displayDosenData(dosen);
+        } catch (error) {
+          console.error("Error fetching dosen detail:", error);
+          document.getElementById("dosen-loading").textContent =
+            "Data dosen wali tidak tersedia.";
+        }
+      }
+
+      // Fungsi untuk menampilkan data mahasiswa
+      function displayMahasiswaData(mahasiswa) {
+        document.getElementById("mahasiswa-loading").classList.add("hidden");
+        document.getElementById("mahasiswa-data").classList.remove("hidden");
+
+        // Isi data mahasiswa
+        document.getElementById("mahasiswa-nama").textContent = mahasiswa.nama;
+        document.getElementById(
+          "mahasiswa-nim"
+        ).textContent = `NIM: ${mahasiswa.nim}`;
+        document.getElementById("detail-nim").textContent = mahasiswa.nim;
+        document.getElementById("detail-nama").textContent = mahasiswa.nama;
+        document.getElementById("detail-jurusan").textContent =
+          mahasiswa.jurusan;
+        document.getElementById("detail-semester").textContent =
+          mahasiswa.semester;
+
+        // Update title halaman
+        document.title = `SIAKAD - ${mahasiswa.nama}`;
+      }
+
+      // Fungsi untuk menampilkan data dosen wali
+      function displayDosenData(dosen) {
+        document.getElementById("dosen-loading").classList.add("hidden");
+        document.getElementById("dosen-data").classList.remove("hidden");
+
+        // Isi data dosen
+        document.getElementById("dosen-nip").textContent = dosen.nip;
+        document.getElementById("dosen-nama").textContent = dosen.nama;
+        document.getElementById("dosen-departemen").textContent =
+          dosen.departemen;
+
+        // Set link detail dosen
+        document.getElementById(
+          "link-dosen"
+        ).href = `/detail-dosen?id=${dosen.id}`;
+      }
+
+      // Fungsi untuk menampilkan pesan error
+      function showError(message) {
+        document.getElementById("mahasiswa-loading").classList.add("hidden");
+        const errorElement = document.getElementById("error-message");
+        errorElement.textContent = message;
+        errorElement.classList.remove("hidden");
+      }
+    </script>
+  </body>
+</html>

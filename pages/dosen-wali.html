@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIAKAD - Daftar Dosen Wali</title>
+    <link href="/css/style.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="siakad-header text-white shadow-md">
+      <div class="container mx-auto p-4">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center">
+            <h1 class="text-2xl font-bold">SIAKAD</h1>
+            <span class="ml-2 text-sm">Sistem Informasi Akademik</span>
+          </div>
+
+          <!-- Navigasi -->
+          <nav class="hidden md:block">
+            <ul class="flex space-x-6">
+              <li>
+                <a
+                  href="/beranda"
+                  class="font-medium hover:text-blue-200 transition-colors duration-300"
+                  >Beranda</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/mahasiswa"
+                  class="font-medium hover:text-blue-200 transition-colors duration-300"
+                  >Mahasiswa</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/dosen-wali"
+                  class="font-medium hover:text-blue-200 transition-colors duration-300 border-b-2 border-white"
+                  >Dosen Wali</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/tentang"
+                  class="font-medium hover:text-blue-200 transition-colors duration-300"
+                  >Tentang</a
+                >
+              </li>
+            </ul>
+          </nav>
+
+          <!-- Menu mobile (responsif) -->
+          <div class="md:hidden">
+            <button
+              id="mobile-menu-button"
+              class="text-white focus:outline-none"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Menu mobile dropdown -->
+        <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2">
+          <a
+            href="/beranda"
+            class="block py-2 px-4 text-white hover:bg-blue-600 rounded mt-1"
+            >Beranda</a
+          >
+          <a
+            href="/mahasiswa"
+            class="block py-2 px-4 text-white hover:bg-blue-600 rounded mt-1"
+            >Mahasiswa</a
+          >
+          <a
+            href="/dosen-wali"
+            class="block py-2 px-4 text-white bg-blue-600 rounded"
+            >Dosen Wali</a
+          >
+          <a
+            href="/tentang"
+            class="block py-2 px-4 text-white hover:bg-blue-600 rounded mt-1"
+            >Tentang</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-4 flex-grow page-transition">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-2xl font-bold text-blue-700">Daftar Dosen Wali</h2>
+
+          <!-- Filter dan Pencarian -->
+          <div class="flex space-x-4">
+            <div class="relative">
+              <select
+                id="filter-departemen"
+                class="siakad-input block appearance-none bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none"
+              >
+                <option value="">Semua Departemen</option>
+                <option value="Informatika">Informatika</option>
+                <option value="Sistem Informasi">Sistem Informasi</option>
+                <option value="Teknik Komputer">Teknik Komputer</option>
+              </select>
+              <div
+                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+              >
+                <svg
+                  class="fill-current h-4 w-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <div class="relative">
+              <input
+                type="text"
+                id="search-dosen"
+                placeholder="Cari dosen..."
+                class="siakad-input block bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded leading-tight focus:outline-none"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Grid Dosen Wali -->
+        <div
+          id="dosen-grid"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          <!-- Data dosen wali akan ditampilkan di sini secara dinamis menggunakan JavaScript -->
+          <div class="text-center py-8 text-gray-500">
+            Memuat data dosen wali...
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="siakad-footer text-white py-6">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-4 md:mb-0">
+            <h3 class="text-xl font-bold">SIAKAD</h3>
+            <p class="text-sm">Sistem Informasi Akademik © 2025</p>
+          </div>
+          <div class="flex space-x-4">
+            <a
+              href="/beranda"
+              class="hover:text-blue-300 transition-colors duration-300"
+              >Beranda</a
+            >
+            <a
+              href="/mahasiswa"
+              class="hover:text-blue-300 transition-colors duration-300"
+              >Mahasiswa</a
+            >
+            <a
+              href="/dosen-wali"
+              class="hover:text-blue-300 transition-colors duration-300"
+              >Dosen Wali</a
+            >
+            <a
+              href="/tentang"
+              class="hover:text-blue-300 transition-colors duration-300"
+              >Tentang</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Toggle mobile menu
+      document
+        .getElementById("mobile-menu-button")
+        .addEventListener("click", function () {
+          const mobileMenu = document.getElementById("mobile-menu");
+          mobileMenu.classList.toggle("hidden");
+        });
+
+      // Fetch dan tampilkan data dosen wali
+      document.addEventListener("DOMContentLoaded", function () {
+        fetchDosenWali();
+
+        // Tambahkan event listener untuk filter dan pencarian
+        document
+          .getElementById("filter-departemen")
+          .addEventListener("change", filterDosenWali);
+        document
+          .getElementById("search-dosen")
+          .addEventListener("input", filterDosenWali);
+      });
+
+      // Fungsi untuk mengambil data dosen wali dari API
+      async function fetchDosenWali() {
+        try {
+          const response = await fetch("/api/dosen-wali");
+          const dosenWali = await response.json();
+
+          // Ambil juga data mahasiswa untuk menghitung jumlah mahasiswa bimbingan
+          const mahasiswaResponse = await fetch("/api/mahasiswa");
+          const mahasiswa = await mahasiswaResponse.json();
+
+          // Hitung jumlah mahasiswa per dosen
+          dosenWali.forEach((dosen) => {
+            dosen.jumlahMahasiswa = mahasiswa.filter(
+              (mhs) => mhs.dosenWaliId === dosen.id
+            ).length;
+          });
+
+          // Simpan data asli untuk keperluan filtering
+          window.dosenWaliData = dosenWali;
+
+          // Tampilkan data dalam grid
+          renderDosenWaliGrid(dosenWali);
+        } catch (error) {
+          console.error("Error fetching dosen wali data:", error);
+          document.getElementById("dosen-grid").innerHTML = `
+          <div class="col-span-full text-center py-8 text-red-500">
+            Gagal memuat data dosen wali. Silakan coba lagi nanti.
+          </div>
+        `;
+        }
+      }
+
+      // Fungsi untuk menampilkan data dosen wali dalam grid
+      function renderDosenWaliGrid(dosenWali) {
+        const dosenGrid = document.getElementById("dosen-grid");
+
+        if (dosenWali.length === 0) {
+          dosenGrid.innerHTML = `
+          <div class="col-span-full text-center py-8 text-gray-500">
+            Tidak ada data dosen wali yang sesuai dengan kriteria pencarian.
+          </div>
+        `;
+          return;
+        }
+
+        let gridHTML = "";
+        dosenWali.forEach((dosen) => {
+          gridHTML += `
+          <div class="siakad-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+            <div class="p-6">
+              <div class="mb-4 flex justify-between items-start">
+                <div>
+                  <h3 class="text-xl font-semibold text-blue-600">${dosen.nama}</h3>
+                  <p class="text-gray-600">NIP: ${dosen.nip}</p>
+                </div>
+                <span class="siakad-badge badge-primary">${dosen.departemen}</span>
+              </div>
+              
+              <div class="mb-4">
+                <p class="text-gray-600">
+                  <span class="font-semibold">Departemen:</span> ${dosen.departemen}
+                </p>
+                <p class="text-gray-600">
+                  <span class="font-semibold">Mahasiswa Bimbingan:</span> ${dosen.jumlahMahasiswa} orang
+                </p>
+              </div>
+              
+              <div class="text-center">
+                <a href="/detail-dosen?id=${dosen.id}" class="siakad-button inline-block px-4 py-2 bg-blue-500 text-white rounded-md">
+                  Lihat Detail
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+        });
+
+        dosenGrid.innerHTML = gridHTML;
+      }
+
+      // Fungsi untuk memfilter data dosen wali berdasarkan input pencarian dan filter departemen
+      function filterDosenWali() {
+        const searchTerm = document
+          .getElementById("search-dosen")
+          .value.toLowerCase();
+        const departemenFilter =
+          document.getElementById("filter-departemen").value;
+
+        if (!window.dosenWaliData) return;
+
+        const filteredData = window.dosenWaliData.filter((dosen) => {
+          const matchDepartemen =
+            departemenFilter === "" || dosen.departemen === departemenFilter;
+          const matchSearch =
+            dosen.nama.toLowerCase().includes(searchTerm) ||
+            dosen.nip.toLowerCase().includes(searchTerm);
+
+          return matchDepartemen && matchSearch;
+        });
+
+        renderDosenWaliGrid(filteredData);
+      }
+    </script>
+  </body>
+</html>

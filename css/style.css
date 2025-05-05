@@ -1,0 +1,110 @@
+/* Styling tambahan di luar Tailwind */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.siakad-header {
+  background: linear-gradient(135deg, #3490dc 0%, #2779bd 100%);
+}
+
+.siakad-footer {
+  background-color: #2d3748;
+}
+
+.siakad-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.siakad-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.siakad-table th {
+  background-color: #4299e1;
+  color: white;
+}
+
+.siakad-table tr:nth-child(even) {
+  background-color: #ebf8ff;
+}
+
+.siakad-table tr:hover {
+  background-color: #bee3f8;
+}
+
+.siakad-button {
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+}
+
+.siakad-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.siakad-input:focus {
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+}
+
+.siakad-badge {
+  display: inline-block;
+  padding: 0.25em 0.75em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+}
+
+.badge-primary {
+  color: #fff;
+  background-color: #3182ce;
+}
+
+.badge-success {
+  color: #fff;
+  background-color: #38a169;
+}
+
+.badge-warning {
+  color: #fff;
+  background-color: #d69e2e;
+}
+
+.badge-danger {
+  color: #fff;
+  background-color: #e53e3e;
+}
+
+/* Animasi halaman */
+.page-transition {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media queries untuk responsif */
+@media (max-width: 768px) {
+  .siakad-header {
+    padding: 0.5rem !important;
+  }
+
+  .siakad-card {
+    margin-bottom: 1rem !important;
+  }
+}
